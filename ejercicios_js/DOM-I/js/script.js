@@ -154,14 +154,121 @@ const p1 = document.querySelector("h2 + p"); // article > p
 const img = document.querySelector("article > img");
 
 h2.addEventListener("click", function () {
-    h2.innerText = "Hechizo lanzado"
+  h2.innerText = "Hechizo lanzado";
 });
 
 p1.addEventListener("click", function () {
-    p1.style.color = "blue";
-    p1.style.backgroundColor = "yellow";
+  p1.style.color = "blue";
+  p1.style.backgroundColor = "yellow";
 });
 
 img.addEventListener("click", function () {
-    img.src = "https://cdn.sanity.io/images/5vm5yn1d/pro/41c7e7ce298604b0801fc2b1b76371a47e9ebb83-950x633.jpg";
+  img.src =
+    "https://cdn.sanity.io/images/5vm5yn1d/pro/41c7e7ce298604b0801fc2b1b76371a47e9ebb83-950x633.jpg";
 });
+
+document.getElementById("boton1").addEventListener("click", () => {
+  const div1 = document.getElementById("div1");
+
+  // Forma 1 "clásica"
+
+  // Crear nodo parrafo
+  const p1 = document.createElement("p");
+  // Crear nodo texto
+  const txt1 = document.createTextNode("Texto creado desde JS 1");
+  // unir p1->txt
+  p1.appendChild(txt1);
+
+  console.log(p1);
+
+  // unir div -> p1. Mostrar en el DOM
+  div1.appendChild(p1);
+  div1.appendChild(p1);
+  div1.appendChild(p1);
+
+  const p2 = document.createElement("p");
+  const txt2 = document.createTextNode("Texto creado desde JS 2");
+  p2.appendChild(txt2);
+  div1.appendChild(p2);
+
+  // Editar nodo existente 1
+  // replaceChild(newChild,oldChild)
+  const oldChild = document.getElementById("p2");
+
+  const newChild = document.createElement("p");
+  newChild.textContent = "Texto editado desde JS!";
+  // Reemplazar
+  div1.replaceChild(newChild, oldChild);
+
+  // Editar nodo existente 2
+  const p3 = document.getElementById("p3");
+  p3.textContent = "Texto editado desde JS! 2";
+});
+
+// Template string
+let a = 44;
+let comida = "pizza";
+let mensaje = `Tus datos: 
+              - Tienes ${a} años 
+              - Te gusta la ${comida}`;
+console.log(mensaje);
+
+console.log(`<h1>Comida favorita: ${comida}</h1>`);
+const h1 = `<h1>Comida favorita: ${comida}</h1>`;
+document.body.innerHTML += h1;
+
+const datos = [
+  { marca: "BMW", peso: 1600, color: "rojo" },
+  { marca: "BMW", peso: 1600, color: "azul" },
+  { marca: "BMW", peso: 1600, color: "verde" },
+  { marca: "BMW", peso: 1600, color: "amarillo" },
+];
+
+document.getElementById("boton3").addEventListener("click", () => {
+  const lista = `
+    <section>
+        <article>
+            <p>${datos[0].marca}</p>
+            <p>${datos[0].peso}</p>
+            <p>${datos[0].color}</p>
+        </article>
+        <article>
+            <p>${datos[1].marca}</p>
+            <p>${datos[1].peso}</p>
+            <p>${datos[1].color}</p>
+        </article>
+        <article>
+            <p>${datos[2].marca}</p>
+            <p>${datos[2].peso}</p>
+            <p>${datos[2].color}</p>
+        </article>
+    </section>`;
+
+  console.log(lista);
+
+  document.querySelector("#div3").innerHTML += lista;
+});
+
+document.getElementById("boton4").addEventListener("click", () => {
+  let lista = `<section>`;
+
+  for (let i = 0; i < datos.length; i++) {
+    lista += `<article>
+                <p>${datos[i].marca}</p>
+                <p>${datos[i].peso}</p>
+                <p>${datos[i].color}</p>
+              </article>`;
+  }
+
+  lista += `</section>`;
+
+  console.log(lista);
+
+  document.querySelector("#div3").innerHTML += lista;
+});
+
+// Borrar lista 
+document.getElementById("boton4borrar").addEventListener("click", () => { 
+
+  document.querySelector("#div3").innerHTML = "";
+})
