@@ -253,3 +253,208 @@ if(esCliente3){
 }else{
     console.info("Sorry, espera a hacerte mayor :)")
 }
+
+/***** Ejemplos destructuring *****/
+
+const user1 = {
+  id: 1,
+  name: "John Doe",
+  email: "john@gmail.com",
+  address: "123 Main St",
+  phone: "555-555-5555"
+}
+
+let {name:name1, email:emai1} = user1;
+
+name1 = "Hola";  
+console.log(name1);
+
+const user2 = {
+  id: 2,
+  name: "Ana",
+  email: "ana@gmail.com",
+  address: "123 Main St",
+  phone: "555-555-5555"
+}
+
+let {name:name2, email:email2} = user2;
+console.log(name2);
+
+const users2 = [
+  {
+    id: 1,
+    name: "John Doe",
+    email: "john@gmail.com",
+    address: "123 Main St",
+    phone: "555-555-5555"
+  },
+  {
+    id: 2,
+    name: "Ana",
+    email: "ana@gmail.com",
+    address: "123 Main St",
+    phone: "555-555-5555"
+  }
+  ,  
+  {
+    id: 3,
+    name: "Marta",
+    email: "marta@gmail.com",
+    address: "123 Main St",
+    phone: "555-555-5555"
+  }
+]
+
+const res = users2.map(user => `${user.name} ${user.email}`);
+console.log(res); // [string,string]
+const usuario1 = res[0];
+const usuario2 = res[1];
+
+
+// const name3 = users2[0].name;
+// const email3 = users2[0].email;
+// const name4 = users2[1].name;
+// const email4 = users2[1].email;
+const [{name,email}] = users2;
+console.log(name,email);
+
+
+const {name:name3,email:email3} = users2[1];
+console.log(name3,email3);
+
+const [{name:name4,email:email4}, ,{name:name5,email:email5}] = users2;
+console.log(name4,"-",email4);
+console.log(name5,"-",email5);
+
+
+let misConocimientos = [
+  "variables",
+  "operadores",
+  "estructuras de control",
+  "funciones",
+];
+// Spread
+let aprendido = ["rest operator", "spread operator"];
+let misConocimientosAmpliados = [...misConocimientos, ...aprendido, "otra cosa más"];
+console.log(misConocimientosAmpliados);
+
+
+/* Mergeando objetos */
+const oldUser = {
+  name: "Jen",
+  age: 22,
+};
+
+const newUser = {
+  name: "Andrew",
+  location: "Philadelphia",
+};
+
+// Spread
+const mergedUsers = { ...oldUser, ...newUser }; // name, age, location
+console.log(mergedUsers);
+
+// Rest
+function add(...numbers) {
+  // "rest" es un array con todos los parámetros recogidos
+  console.log(numbers); 
+  
+  let total = 0;
+
+  for (let i = 0; i < numbers.length; i++) {
+    total += numbers[i];
+  }
+  return total;
+}
+
+ // returns 1
+console.log(add(1));
+console.log(add(1, 2)); // returns 3
+console.log(add(1, 2, 3, 4, 5)); // returns 15
+console.log(add(1, 2, 3, 4, 5, 99, 18, 17, 98)); 
+console.log(add("queso","pizza","lechuga","ternera")); 
+
+// Rest
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+
+console.log(a);
+console.log(b);
+console.log(rest);  // 120 ? 
+
+
+// For....in
+const user3 = {
+  id: 2,
+  name: "Ana",
+  email: "ana@gmail.com",
+  address: "123 Main St",
+  phone: "555-555-5555"
+}
+
+console.log(user3.email);
+console.log(user3["email"]);
+
+
+
+for (const clave in user3) {
+  console.log("**************");
+  console.log(clave);
+  console.log(`Dato impreso: ${clave}: ${user3[clave]}`);
+}
+
+console.log(Object.keys(user3)); // [] de claves
+const claves = Object.keys(user3); // ["id","name","email","addreess","phone"] de claves
+
+for (let i = 0; i < claves.length; i++) {
+  console.log(`Dato impreso: ${claves[i]}: ${user3[claves[i]]}`);
+}
+
+
+let arr2 = [4, 5, 9];
+
+for (let i in arr2) {
+  console.log(i);
+}
+
+for (let i = 0; i < arr2.length; i++) {
+  console.log(i);
+}
+
+// for..of. Devuelve el contenido en cada posición
+//Iteración sobre valores
+
+let numeros = [99, 22, 33];
+
+for (let num of numeros) {
+  console.log(num);
+}
+
+
+let coches = [{ name: "Peugeot", year: 2002}, { name: "BMW", year:2015 }];
+
+for (let item of coches) {
+  console.log(item.name);
+  console.log(item.year);
+}
+
+
+// For of con destructuring
+for (let {name,year} of coches) {
+  console.log(name);
+  console.log(year);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
