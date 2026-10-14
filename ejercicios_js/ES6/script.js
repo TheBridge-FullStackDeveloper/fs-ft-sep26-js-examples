@@ -234,7 +234,6 @@ if (esCliente2) {
   console.info(mensaje);
 }
 
-
 // Ejemplo 2
 let esCliente3 = true;
 let esAdulto = true;
@@ -246,12 +245,12 @@ console.info(
     : "Sorry, espera a hacerte mayor :)"
 );
 
-if(esCliente3){
-    console.info("Debes pagar 10.00€");
-} else if(esAdulto){
-    console.info("Envíe su solicitd")
-}else{
-    console.info("Sorry, espera a hacerte mayor :)")
+if (esCliente3) {
+  console.info("Debes pagar 10.00€");
+} else if (esAdulto) {
+  console.info("Envíe su solicitd");
+} else {
+  console.info("Sorry, espera a hacerte mayor :)");
 }
 
 /***** Ejemplos destructuring *****/
@@ -261,12 +260,12 @@ const user1 = {
   name: "John Doe",
   email: "john@gmail.com",
   address: "123 Main St",
-  phone: "555-555-5555"
-}
+  phone: "555-555-5555",
+};
 
-let {name:name1, email:emai1} = user1;
+let { name: name1, email: emai1 } = user1;
 
-name1 = "Hola";  
+name1 = "Hola";
 console.log(name1);
 
 const user2 = {
@@ -274,10 +273,10 @@ const user2 = {
   name: "Ana",
   email: "ana@gmail.com",
   address: "123 Main St",
-  phone: "555-555-5555"
-}
+  phone: "555-555-5555",
+};
 
-let {name:name2, email:email2} = user2;
+let { name: name2, email: email2 } = user2;
 console.log(name2);
 
 const users2 = [
@@ -286,46 +285,43 @@ const users2 = [
     name: "John Doe",
     email: "john@gmail.com",
     address: "123 Main St",
-    phone: "555-555-5555"
+    phone: "555-555-5555",
   },
   {
     id: 2,
     name: "Ana",
     email: "ana@gmail.com",
     address: "123 Main St",
-    phone: "555-555-5555"
-  }
-  ,  
+    phone: "555-555-5555",
+  },
   {
     id: 3,
     name: "Marta",
     email: "marta@gmail.com",
     address: "123 Main St",
-    phone: "555-555-5555"
-  }
-]
+    phone: "555-555-5555",
+  },
+];
 
-const res = users2.map(user => `${user.name} ${user.email}`);
+const res = users2.map((user) => `${user.name} ${user.email}`);
 console.log(res); // [string,string]
 const usuario1 = res[0];
 const usuario2 = res[1];
-
 
 // const name3 = users2[0].name;
 // const email3 = users2[0].email;
 // const name4 = users2[1].name;
 // const email4 = users2[1].email;
-const [{name,email}] = users2;
-console.log(name,email);
+const [{ name, email }] = users2;
+console.log(name, email);
 
+const { name: name3, email: email3 } = users2[1];
+console.log(name3, email3);
 
-const {name:name3,email:email3} = users2[1];
-console.log(name3,email3);
-
-const [{name:name4,email:email4}, ,{name:name5,email:email5}] = users2;
-console.log(name4,"-",email4);
-console.log(name5,"-",email5);
-
+const [{ name: name4, email: email4 }, , { name: name5, email: email5 }] =
+  users2;
+console.log(name4, "-", email4);
+console.log(name5, "-", email5);
 
 let misConocimientos = [
   "variables",
@@ -335,9 +331,12 @@ let misConocimientos = [
 ];
 // Spread
 let aprendido = ["rest operator", "spread operator"];
-let misConocimientosAmpliados = [...misConocimientos, ...aprendido, "otra cosa más"];
+let misConocimientosAmpliados = [
+  ...misConocimientos,
+  ...aprendido,
+  "otra cosa más",
+];
 console.log(misConocimientosAmpliados);
-
 
 /* Mergeando objetos */
 const oldUser = {
@@ -357,8 +356,8 @@ console.log(mergedUsers);
 // Rest
 function add(...numbers) {
   // "rest" es un array con todos los parámetros recogidos
-  console.log(numbers); 
-  
+  console.log(numbers);
+
   let total = 0;
 
   for (let i = 0; i < numbers.length; i++) {
@@ -367,20 +366,19 @@ function add(...numbers) {
   return total;
 }
 
- // returns 1
+// returns 1
 console.log(add(1));
 console.log(add(1, 2)); // returns 3
 console.log(add(1, 2, 3, 4, 5)); // returns 15
-console.log(add(1, 2, 3, 4, 5, 99, 18, 17, 98)); 
-console.log(add("queso","pizza","lechuga","ternera")); 
+console.log(add(1, 2, 3, 4, 5, 99, 18, 17, 98));
+console.log(add("queso", "pizza", "lechuga", "ternera"));
 
 // Rest
 [a, b, ...rest] = [10, 20, 30, 40, 50];
 
 console.log(a);
 console.log(b);
-console.log(rest);  // 120 ? 
-
+console.log(rest); // 120 ?
 
 // For....in
 const user3 = {
@@ -388,13 +386,11 @@ const user3 = {
   name: "Ana",
   email: "ana@gmail.com",
   address: "123 Main St",
-  phone: "555-555-5555"
-}
+  phone: "555-555-5555",
+};
 
 console.log(user3.email);
 console.log(user3["email"]);
-
-
 
 for (const clave in user3) {
   console.log("**************");
@@ -408,7 +404,6 @@ const claves = Object.keys(user3); // ["id","name","email","addreess","phone"] d
 for (let i = 0; i < claves.length; i++) {
   console.log(`Dato impreso: ${claves[i]}: ${user3[claves[i]]}`);
 }
-
 
 let arr2 = [4, 5, 9];
 
@@ -429,32 +424,116 @@ for (let num of numeros) {
   console.log(num);
 }
 
-
-let coches = [{ name: "Peugeot", year: 2002}, { name: "BMW", year:2015 }];
+let coches = [
+  { name: "Peugeot", year: 2002 },
+  { name: "BMW", year: 2015 },
+];
 
 for (let item of coches) {
   console.log(item.name);
   console.log(item.year);
 }
 
-
 // For of con destructuring
-for (let {name,year} of coches) {
+for (let { name, year } of coches) {
   console.log(name);
   console.log(year);
 }
 
+function addOnlyNums(...number) {
+  return number.reduce((sum, value) => {
+    return typeof value === "number" ? sum + value : sum;
+  }, 0);
+}
+console.log(addOnlyNums(1, "perro", 9, "gato", 4));
+
+const addOnlyNums2 = (...number) =>
+  number
+    .filter((value) => typeof value === "number")
+    .reduce((acc, actual) => acc + actual);
+
+console.time("***timer1***");
+console.log(addOnlyNums(1, "perro", 9, "gato", 4));
+console.timeEnd("***timer1***");
+
+console.time("***timer2***");
+console.log(addOnlyNums2(1, "perro", 9, "gato", 4));
+console.timeEnd("***timer2***");
+
+function onlyUniques(...arr) {
+  // [] -> arr
+
+  // [1, 1, 2, 2, 3, 6, 7, 8]
+
+  // [1,2,3,6]
+  let resultado = arr.filter((num, index) => arr.indexOf(num) === index);
+  // 0 === 0  --> true
+  // 0 === 1  --> false
+  // 2 === 2  --> true
+  // 2 === 3  --> false
+  //....
+  // 5 === 5 --> true (6)
+
+  return resultado;
+}
+console.log(onlyUniques("gato", "pollo", "cerdo", "cerdo"));
+console.log(onlyUniques(1, 1, 2, 2, 3, 6, 7, 8));
+
+function combineAllArrays1(...arr) {
+  let result = [];
+  for (let elemento of arr) {
+    for (let i = 0; i < elemento.length; i++) {
+      result.push(elemento[i]);
+    }
+  }
+  return result;
+}
+
+console.log(
+  combineAllArrays1(
+    [3, 6, 7, 8],
+    [2, 7, "queso", 3, 1],
+    [2, 7, "queso", 3, 1],
+    [2, 7, "queso", 3, 1],
+    [2, 7, "queso", 3, 1],
+    [2, 7, "queso", 3, 1],
+    [2, 7, "queso", 3, 1]
+  )
+);
+console.log(
+  combineAllArrays1([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1])
+);
+
+function combineAllArrays2(...args) {
+  let total = [];
+  for (let array of args) {
+    total.push(...array);
+  }
+  return total;
+}
+console.log(combineAllArrays2([3, 6, 7, 8], [2, 7, "queso", 3, 1]));
+console.log(
+  combineAllArrays2([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1])
+);
+
+function combineAllArrays3(...arr) {
+  const resultado = [];
+
+  for (const miniArray of arr) {
+    for (const item of miniArray) {
+      resultado.push(item);
+    }
+  }
+
+  return resultado;
+}
+
+console.log(combineAllArrays3([3, 6, 7, 8], [2, 7, "queso", 3, 1]));
+console.log(
+  combineAllArrays3([2, 7, 3, 1], [2, 7, 4, 12], [2, 44, 22, 7, 3, 1])
+);
 
 
+const combineAllArrays4 = (...arr) => arr.reduce((acc, curr) => [...acc, ...curr]);
 
-
-
-
-
-
-
-
-
-
-
-
+console.log(combineAllArrays4([3, 6, 7, 8],[2, 7, 3, 1],[4, 2, 1],[3, 6, 7, 8],[3, 6, 7, 8],[3, 6, 7, 8],[3, 6, 7, 8],[3, 6, 7, 8]));
