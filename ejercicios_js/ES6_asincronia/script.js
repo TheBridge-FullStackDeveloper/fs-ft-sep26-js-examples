@@ -83,6 +83,14 @@ Promise.all([
 async function showEpisode() {
   const url = "https://rickandmortyapi.com/api/character/2";
   try {
+    // Inicia el "cargando...." (mostrar mensaje o spinner)
+    document.querySelector("#spinner").classList.toggle("hide");
+
+    // variante 2
+    document.querySelector("#spinner2").innerHTML += `        
+        <p>cargando...</p>
+        <img src="./loading.webp" alt="morty">`;
+
     // Llamada 1
     const res = await fetch(url);
     const data = await res.json();
@@ -96,13 +104,24 @@ async function showEpisode() {
     const date = episode_data.air_date;
 
     const resultado = `Capítulo:${title}. Fecha de emisión:${date}`;
+
+    // wait 3 seconds
+    await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+
+    // Quitar spinner
+    document.querySelector("#spinner").classList.toggle("hide");
+    document.querySelector("#spinner2").innerHTML = "";
+
     return resultado;
   } catch (error) {
-        console.error("error. Hubo algun problema: "+error.message);
+    console.error("error. Hubo algun problema: " + error.message);
   }
 }
 
-showEpisode().then((data) => console.log(data));
+showEpisode().then((data) => {
+  console.log(data);
+  document.getElementById("resultados").innerHTML += data;
+});
 
 // const urlApi = "https://rickandmortyapi.com/api/character/2";
 
